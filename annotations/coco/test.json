@@ -1,7 +1,7 @@
 {
   "info": {
-    "description": "Accepted UAE license plate detection release converted directly from final YOLO labels",
-    "version": "2.0.0",
+    "description": "Frozen UAE full-plate release converted from accepted YOLO labels",
+    "version": "2.0.1",
     "date_created": "2026-07-10",
     "source_url": "https://universe.roboflow.com/addinguae/uae-zcfqj",
     "license": "CC BY 4.0"

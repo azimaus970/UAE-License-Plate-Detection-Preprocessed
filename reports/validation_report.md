@@ -1,59 +1,65 @@
 # Dataset Validation Report
 
-- Command: `C:\Users\kamsd\OneDrive\Desktop\uae-license-plate-detection\uae-license-plate-detection-final\.venv\Scripts\python.exe scripts\validate_dataset.py --package-root . --dataset-root datasets\uae_lp_v2_yolo`
-- Execution date: 2026-07-10T14:06:06+04:00
-- Dataset path: `C:\Users\kamsd\OneDrive\Desktop\uae-license-plate-detection\uae-license-plate-detection-final\datasets\uae_lp_v2_yolo`
-- Floating-point bounds tolerance: `1e-06` normalized units
-- YOLO-COCO parity tolerance: `0.01` pixel
+The GitHub source repository intentionally excludes dataset image files. Repository validation uses committed labels, manifests and COCO metadata; full validation uses the separately distributed images.
 
-## Check Results
+## Repository Validation
+
+Command: `python scripts/validate_dataset.py --mode repository`
 
 | Check | Observed | Status |
 |---|---|---|
-| 1. Required directories exist | missing=0 | PASS |
-| 2. Every image is fully decodable | decoded=9610, errors=0 | PASS |
-| 3. No zero-byte images or labels | zero_byte_files=0 | PASS |
-| 4. Every image has exactly one matching label | mismatches=0 | PASS |
-| 5. Every label has exactly one matching image | mismatches=0 | PASS |
-| 6. No duplicate image stems | duplicate_stem_issues=0 | PASS |
-| 7. No duplicate filenames within or across splits | duplicate_filenames=0 | PASS |
-| 8. Every YOLO row is numeric, valid, and finite | invalid_rows=0 | PASS |
-| 9. Every class ID is zero | nonzero_rows=0 | PASS |
-| 10. Every YOLO box stays within image bounds | tolerance=1e-06; violations=0 | PASS |
-| 11. No unexplained empty labels | empty_labels=0 | PASS |
-| 12. data.yaml paths, nc, and class name are correct | yaml_errors=0 | PASS |
-| 13. COCO has exactly one license_plate category | category_issues=0 | PASS |
-| 14. COCO image and annotation IDs are unique | image_ids=9610, annotation_ids=12451, issues=0 | PASS |
-| 15. Every COCO annotation references an image | reference_issues=0 | PASS |
-| 16. COCO dimensions equal decoded image dimensions | dimension_issues=0 | PASS |
-| 17. Every COCO box is positive and inside the image | bbox_issues=0 | PASS |
-| 18. Every COCO area equals width multiplied by height | area_issues=0 | PASS |
-| 19. Every YOLO image appears once in the correct COCO split | membership_issues=0 | PASS |
-| 20. Every YOLO box matches COCO within 0.01 pixel | parity_issues=0 | PASS |
-| 21. No excluded image remains in a final split | excluded_rows=16, remaining=0 | PASS |
-| 22. Exact SHA-256 image duplicates do not cross splits | images_hashed=9610, unique_hashes=9610, cross_split_groups=0 | PASS |
-| 23. No split is empty | train=6738, val=1440, test=1432 | PASS |
-| 24. Final release counts and hashes match dataset_release.json | release_issues=0 | PASS |
-| 25. Accepted image and box counts match | train=6738/9415; val=1440/1525; test=1432/1511; total=9610/12451 | PASS |
+| Required repository files | missing=0 | PASS |
+| Exactly one README.md | count=1 | PASS |
+| Repository packaging hygiene | tracked_files=9648, issues=0 | PASS |
+| Abandoned review artifacts are absent | remaining=0 | PASS |
+| Legacy review language is absent | matches=0 | PASS |
+| Absolute private paths are absent | matches=0 | PASS |
+| Root and nested data.yaml semantics | issues=0 | PASS |
+| Active manifest membership and split counts | rows=9610; counts={'train': {'images': 6738, 'boxes': 9415}, 'val': {'images': 1440, 'boxes': 1525}, 'test': {'images': 1432, 'boxes': 1511}, 'total': {'images': 9610, 'boxes': 12451}} | PASS |
+| YOLO label syntax, class, bounds and nonempty rows | labels=9610, boxes=12451, issues=0 | PASS |
+| Committed label SHA-256 values | checked=9610, issues=0 | PASS |
+| Recorded image SHA-256 uniqueness across splits | cross_split_groups=0 | PASS |
+| COCO category, IDs and references | category=0, ids=0, refs=0 | PASS |
+| COCO dimensions, boxes and areas | issues=0 | PASS |
+| YOLO-COCO membership | issues=0; counts={'train': {'images': 6738, 'boxes': 9415}, 'val': {'images': 1440, 'boxes': 1525}, 'test': {'images': 1432, 'boxes': 1511}} | PASS |
+| YOLO-COCO 0.01-pixel parity | issues=0 | PASS |
+| Sixteen project-owner exclusions | rows=16, active_overlap=0 | PASS |
+| Preprocessing accounting | metrics=15, issues=0 | PASS |
+| Source class mapping | rows=51, non_target_removed=73826 | PASS |
+| Release counts and manifest/COCO hashes | manifest=f482a802f008ee434a97cc416b2db2ae769b3225bb46873048a8bc345d2ed9f4; coco={'train': '6a81fc7ebda7b2a768747c2ce6d756ea549bbb2aa92c44943d88f330240d594f', 'val': 'bcea301485e6f46861b20da7dd5a85522b4bc2be7db0176f63344428b469d0fb', 'test': 'ca2c8e962e8a756836bd40717156953b1d315054105937d23128eced2bd163f9'}; issues=0 | PASS |
+| Training-only augmentation policy | issues=0 | PASS |
+| Recorded exact cross-split duplicates | count=0 | PASS |
 
-## Observed Counts
+## Full Dataset Validation Evidence
 
-| Split | Images | YOLO boxes | COCO images | COCO annotations |
-|---|---:|---:|---:|---:|
-| train | 6738 | 9415 | 6738 | 9415 |
-| val | 1440 | 1525 | 1440 | 1525 |
-| test | 1432 | 1511 | 1432 | 1511 |
-| total | 9610 | 12451 | 9610 | 12451 |
+Command: `python scripts/validate_dataset.py --mode full`
 
-## Split Leakage QA
+| Check | Observed | Status |
+|---|---|---|
+| Actual image membership | issues=0 | PASS |
+| Actual image decoding | decoded=9610, issues=0 | PASS |
+| Actual image-size verification | checked=9610, issues=0 | PASS |
+| Actual image SHA-256 recomputation | checked=9610, issues=0 | PASS |
+| Current exact cross-split duplicates | count=0 | PASS |
+| Current perceptual-hash scan | candidates=0; threshold=8 | PASS |
+| Visual contact-sheet regeneration | figures=8, issues=0 | PASS |
 
-- Historical review pairs: 43.
-- Current perceptual/template candidates: 0.
-- Unique flagged images in recorded candidates: 29; evaluation images: 11.
-- Exact-duplicate candidate rows: 0.
-- Difference-hash distance threshold: 8.
-- The recorded issue is scene/template leakage: the vehicle and background may be reused while plate text differs.
-- Difference hashing and Hamming distance are optional project QA and are not techniques taught in the supplied lectures.
+## Accepted Counts
+
+| Split | Images | Boxes |
+|---|---:|---:|
+| train | 6738 | 9415 |
+| val | 1440 | 1525 |
+| test | 1432 | 1511 |
+| total | 9610 | 12451 |
+
+## Integrity and Leakage Summary
+
+- Manifest SHA-256: `f482a802f008ee434a97cc416b2db2ae769b3225bb46873048a8bc345d2ed9f4` (PASS)
+- COCO SHA-256 values: `{"test": "ca2c8e962e8a756836bd40717156953b1d315054105937d23128eced2bd163f9", "train": "6a81fc7ebda7b2a768747c2ce6d756ea549bbb2aa92c44943d88f330240d594f", "val": "bcea301485e6f46861b20da7dd5a85522b4bc2be7db0176f63344428b469d0fb"}` (PASS)
+- Exact cross-split duplicates: 0 (PASS)
+- Current perceptual scan: 0
+- Crop-heavy training examples remain intentionally retained as valid full-plate training examples.
 
 ## Overall Status
 

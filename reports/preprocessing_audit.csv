@@ -1,13 +1,16 @@
-metric,before,after,evidence
-source images,9985,NOT_APPLICABLE,actual source split directories
-source label files,9985,NOT_APPLICABLE,actual source label directories
-source boxes,86294,NOT_APPLICABLE,actual parsed source labels
-final images,NOT_APPLICABLE,9610,accepted final dataset
-final label files,NOT_APPLICABLE,9610,accepted final dataset
-final boxes,NOT_APPLICABLE,12451,actual parsed final labels
-images excluded,9985,375,source-minus-accepted release count; includes no-plate filtering and accepted exclusions
-boxes removed by class cleaning,86294,73826,class_mapping.csv
-invalid labels removed,86294,0,all source rows parsed successfully; no invalid row was removed
-unreadable images,NOT_AVAILABLE,0,historical raw decode count unavailable; every final image decoded during this run
-orphan images,0,0,actual image/label stem comparison
-orphan labels,0,0,actual image/label stem comparison
+metric,value,evidence
+source_images,9985,Observed raw image files.
+source_unreadable_images,0,Present-run full decode of the supplied raw export.
+no_plate_images_removed,359,Raw labels containing no source plate class.
+plate_only_candidate_images,9626,Raw images containing at least one source plate box.
+release_decision_images_excluded,16,Project-owner decisions recorded in reports/excluded_images.csv.
+final_images,9610,Frozen accepted release membership.
+source_boxes,86294,Observed raw YOLO rows.
+non_target_boxes_removed,73826,All source classes except the exact plate class.
+source_plate_boxes,12468,Observed source class-50 plate boxes.
+plate_boxes_excluded_with_release_decisions,17,Plate boxes belonging to the 16 excluded images.
+final_plate_boxes,12451,Observed accepted class-0 boxes.
+total_boxes_not_in_final_release,73843,Non-target rows plus plate boxes in excluded images.
+final_unreadable_images,0,Present-run full decode of all accepted images.
+final_orphan_images,0,Accepted image-to-label stem comparison.
+final_orphan_labels,0,Accepted label-to-image stem comparison.

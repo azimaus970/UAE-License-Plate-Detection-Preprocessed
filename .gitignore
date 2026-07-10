@@ -2,4 +2,15 @@ __pycache__/
 *.py[cod]
 .ipynb_checkpoints/
 .venv/
+.env
+.DS_Store
+Thumbs.db
 datasets/uae_lp_v2_yolo/images/
+release_artifacts/
+dist/
+runs/
+weights/
+*.pt
+*.pth
+*.onnx
+*.engine

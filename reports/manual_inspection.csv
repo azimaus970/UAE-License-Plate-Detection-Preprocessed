@@ -1,8 +1,0 @@
-inspection_item,evidence_file,decision_status,human_reviewer,review_date,notes
-random ground-truth samples,reports/figures/train_random_samples.jpg; reports/figures/val_random_samples.jpg; reports/figures/test_random_samples.jpg,NEEDS_HUMAN_REVIEW,,,
-smallest boxes,reports/figures/smallest_boxes.jpg,NEEDS_HUMAN_REVIEW,,,
-largest boxes,reports/figures/largest_boxes.jpg,NEEDS_HUMAN_REVIEW,,,
-multi-plate images,reports/figures/multi_plate_images.jpg,NEEDS_HUMAN_REVIEW,,,
-edge-touching boxes,reports/figures/edge_touching_boxes.jpg,NEEDS_HUMAN_REVIEW,,,
-scene/template leakage pairs,reports/near_duplicate_review_pairs/,NEEDS_HUMAN_REVIEW,,,
-training-only augmentation preview,reports/figures/augmentation_preview.jpg,NEEDS_HUMAN_REVIEW,,,
