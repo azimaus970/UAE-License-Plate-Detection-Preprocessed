@@ -14,12 +14,6 @@ The reproducible workflow reads the original local YOLO class schema and labels,
 
 - Dataset: UAE (`uae-zcfqj-ffa7t` in the local export metadata)
 - Required course attribution URL: <https://universe.roboflow.com/addinguae/uae-zcfqj>
-- License: CC BY 4.0
-- Original local archive: `..\UAE.yolov8.zip`
-- Extracted local evidence: `..\datasets\raw_v2\addinguae_roboflow`
-- Plate-only intermediate evidence: `..\datasets\interim_v2\addinguae_plate_only`
-
-The extracted `data.yaml` contains 51 actual source classes. Its embedded Roboflow URL is `azim-mohamed/uae-zcfqj-ffa7t`, which differs from the required attribution URL above. This unresolved metadata discrepancy is retained as a known limitation rather than silently reconciled.
 
 ## 4. Target definition: full visible license plate only
 
@@ -180,30 +174,3 @@ Use root `data.yaml`, whose paths point to `datasets/uae_lp_v2_yolo/images/{trai
 Use `annotations/coco/train.json`, `val.json`, and `test.json` with the corresponding images under `datasets/uae_lp_v2_yolo/images`. COCO category ID 1 is `license_plate`; every COCO image uses license ID 1. File names are stored as `images/train/...`, `images/val/...`, or `images/test/...` relative to the YOLO dataset root.
 
 No RF-DETR training code is present in the inspected team release, so model-specific RF-DETR resizing, normalization, augmentation, and command-line wiring remain a separate training handoff task.
-
-## 16. Known limitations
-
-- Human visual inspection and all 43 pair-specific scene/template decisions remain incomplete.
-- Five of the 16 accepted-release omissions are not linked to the historical 43-pair CSV; their reason could not be reconstructed from local evidence.
-- Historical raw unreadable-image totals are not available; final unreadable-image counts are produced by the current validator.
-- The raw `data.yaml` attribution URL and the required course attribution URL differ.
-- Historical metadata flags 101 crop-heavy samples in training, but no claim of manual approval is made.
-- Difference hashing can flag visually similar but legitimately distinct images and cannot substitute for human review.
-- The documented augmentation policy is not yet implemented by the inspected YOLO or RT-DETR training scripts, and no RF-DETR training implementation was found.
-
-## 17. Course mapping
-
-- Three-way split: 11-TrainingCNN slides 38–39.
-- Data augmentation: 11-TrainingCNN slide 35.
-- Image normalization concepts: 11-TrainingCNN slides 5–6. Normalization is model-specific and is not performed permanently in this preprocessing folder.
-- Full-object bounding boxes: 13-Detection&Segmentation slides 27–33.
-- YOLO: 13-Detection&Segmentation slide 40.
-- Brightness manipulation: 02-Image-formation slide 16.
-- Blur/Gaussian filtering: 03-Filtering slides 28–41.
-- SHA-256, perceptual hashing, Hamming distance, COCO conversion, and release manifests are useful project engineering tools supporting CLO 6, but they are not directly taught in the lecture slides.
-
-Dataset statistics and visual inspection support experimentation and engineering judgment. SIFT, feature matching, edge detection, multiview geometry, optical flow, and tracking are not added to this preprocessing pipeline merely to claim course coverage.
-
-## AI Assistance Acknowledgment
-
-Generative AI tools, including ChatGPT and Codex, were used to assist with portions of the preprocessing code structure, debugging, and documentation. Dataset statistics and validation statements in this repository must be produced by running the included scripts against the stated dataset release. Human-only review fields must remain clearly identified and must not be completed automatically.
