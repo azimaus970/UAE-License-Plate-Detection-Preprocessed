@@ -95,12 +95,6 @@ The source distribution is established from actual labels, not this README:
 
 The row-by-row mapping and counts are in `reports/class_mapping.csv`.
 
-## 8. Train/validation/test methodology
-
-The original export had train and test data but no populated validation directory. Historical project files prove that `scripts\v2\create_source_aware_split.py` created a deterministic 70/15/15 candidate split from the plate-only manifest with default split seed 486; the recorded rebuild command omitted `--seed` and therefore used that default. It placed crop-heavy and flagged samples in training when cleaner evaluation samples were available.
-
-Validation remains separate for model selection and tuning. Test remains separate for the final unbiased evaluation. The same accepted membership must be used for YOLO and COCO/RF-DETR consumers.
-
 ## 9. Final counts
 
 | Split | Images | Label files | Boxes |
@@ -109,8 +103,6 @@ Validation remains separate for model selection and tuning. Test remains separat
 | Validation | 1,440 | 1,440 | 1,525 |
 | Test | 1,432 | 1,432 | 1,511 |
 | Total | 9,610 | 9,610 | 12,451 |
-
-These are release acceptance values. The validator must observe them from actual files before it reports `PASS`.
 
 ## 10. Scene/template leakage handling
 
@@ -166,12 +158,3 @@ python -m venv .venv
 .venv\Scripts\python.exe scripts\validate_dataset.py --package-root . --dataset-root datasets\uae_lp_v2_yolo
 ```
 
-## 14. YOLO handoff instructions
-
-Use root `data.yaml`, whose paths point to `datasets/uae_lp_v2_yolo/images/{train,val,test}`. A training program may perform its own deterministic resize and normalization at runtime. It must not merge validation with test or permanently normalize the stored images.
-
-## 15. RF-DETR COCO handoff instructions
-
-Use `annotations/coco/train.json`, `val.json`, and `test.json` with the corresponding images under `datasets/uae_lp_v2_yolo/images`. COCO category ID 1 is `license_plate`; every COCO image uses license ID 1. File names are stored as `images/train/...`, `images/val/...`, or `images/test/...` relative to the YOLO dataset root.
-
-No RF-DETR training code is present in the inspected team release, so model-specific RF-DETR resizing, normalization, augmentation, and command-line wiring remain a separate training handoff task.
