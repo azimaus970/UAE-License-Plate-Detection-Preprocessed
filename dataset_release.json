@@ -1,0 +1,39 @@
+{
+  "release_name": "uae_lp_v2_yolo",
+  "semantic_version": "2.0.0",
+  "creation_date": "2026-07-10",
+  "source_dataset_name": "UAE (uae-zcfqj-ffa7t)",
+  "source_url": "https://universe.roboflow.com/addinguae/uae-zcfqj",
+  "license": "CC BY 4.0",
+  "target_class": {
+    "id": 0,
+    "name": "license_plate"
+  },
+  "split_counts": {
+    "train": 6738,
+    "val": 1440,
+    "test": 1432,
+    "total": 9610
+  },
+  "box_counts": {
+    "train": 9415,
+    "val": 1525,
+    "test": 1511,
+    "total": 12451
+  },
+  "actual_split_origin": "Project-controlled deterministic 70/15/15 source-aware split from the plate-only manifest; accepted membership preserves subsequent evaluation-side omissions represented in excluded_images.csv.",
+  "actual_split_seed": 486,
+  "manifest_sha256": "f482a802f008ee434a97cc416b2db2ae769b3225bb46873048a8bc345d2ed9f4",
+  "coco_annotation_sha256": {
+    "train": "736347d4716aa9589e6cc784da4badd0a5bcb94d625e8f0c4f490eedcfb0ec3c",
+    "val": "0c8d4acef7a808af7a378587a6fa3d919786df42380e69c91eb619592589e3b1",
+    "test": "99a911af5700e5506002e9723716617c13aabf7b74043f7aada5fa85b9b0cc16"
+  },
+  "augmentation_policy_filename": "configs/augmentation_policy.yaml",
+  "known_limitations": [
+    "The 43 historical difference-hash scene/template pairs and 16 absent evaluation images still require documented human review.",
+    "Historical raw unreadable-image totals could not be reconstructed from the available local evidence.",
+    "The local raw data.yaml uses azim-mohamed/uae-zcfqj-ffa7t while the required course attribution URL is addinguae/uae-zcfqj; this metadata discrepancy remains documented.",
+    "Crop-heavy and suspicious training samples were retained by the historical split policy and have not been claimed as manually approved."
+  ]
+}

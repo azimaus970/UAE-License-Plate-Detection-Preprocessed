@@ -1,0 +1,13 @@
+metric,before,after,evidence
+source images,9985,NOT_APPLICABLE,actual source split directories
+source label files,9985,NOT_APPLICABLE,actual source label directories
+source boxes,86294,NOT_APPLICABLE,actual parsed source labels
+final images,NOT_APPLICABLE,9610,accepted final dataset
+final label files,NOT_APPLICABLE,9610,accepted final dataset
+final boxes,NOT_APPLICABLE,12451,actual parsed final labels
+images excluded,9985,375,source-minus-accepted release count; includes no-plate filtering and accepted exclusions
+boxes removed by class cleaning,86294,73826,class_mapping.csv
+invalid labels removed,86294,0,all source rows parsed successfully; no invalid row was removed
+unreadable images,NOT_AVAILABLE,0,historical raw decode count unavailable; every final image decoded during this run
+orphan images,0,0,actual image/label stem comparison
+orphan labels,0,0,actual image/label stem comparison

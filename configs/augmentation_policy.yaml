@@ -1,0 +1,15 @@
+enabled_for_train: true
+enabled_for_validation: false
+enabled_for_test: false
+rotation_degrees: [-5, 5]
+scale_range: [0.90, 1.10]
+translation_fraction: 0.05
+brightness_factor: [0.80, 1.20]
+contrast_factor: [0.80, 1.20]
+gaussian_blur_probability: 0.10
+gaussian_blur_radius: [0.10, 1.50]
+constrained_crop_probability: 0.10
+minimum_bbox_visibility: 0.70
+horizontal_flip_probability: 0.00
+vertical_flip_probability: 0.00
+random_seed: 486
