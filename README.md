@@ -1,5 +1,7 @@
 # UAE License Plate Detection: Preprocessing Handoff
 
+### Drive Link : 
+
 ## 1. Project purpose
 
 This folder is the dataset handoff for a course project on detecting complete visible UAE license plates. It supplies one accepted single-class dataset in YOLO and COCO formats. It does not train YOLO, RF-DETR, RT-DETR, or any other model.
@@ -10,14 +12,13 @@ The group’s final GitHub repository must separately provide the training and t
 
 The reproducible workflow reads the original local YOLO class schema and labels, keeps only complete plate boxes, preserves the accepted train/validation/test membership, validates every final image and annotation, converts final YOLO labels to COCO, generates release evidence, and creates visualization and augmentation previews. Saved source images are not permanently normalized or expanded with offline augmentations.
 
-## 3. Dataset source and CC BY 4.0 attribution
+## 3. Dataset source 
 
-- Dataset: UAE (`uae-zcfqj-ffa7t` in the local export metadata)
-- Required course attribution URL: <https://universe.roboflow.com/addinguae/uae-zcfqj>
+- Dataset: UAE (<https://universe.roboflow.com/addinguae/uae-zcfqj>)
 
 ## 4. Target definition: full visible license plate only
 
-The final contract is:
+The final variable is:
 
 ```text
 0 license_plate
