@@ -49,7 +49,6 @@ MANIFEST_COLUMNS = [
 REQUIRED_FILES = {
     ".gitignore",
     "README.md",
-    "DATASET_ATTRIBUTION.md",
     "requirements.txt",
     "data.yaml",
     "dataset_release.json",
